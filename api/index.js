@@ -1,6 +1,6 @@
 const Koa = require('koa');
 const cors = require('@koa/cors');
-const koaBody = require('koa-body');
+const koaBody = require('koa-body').default || require('koa-body');
 const tickets = require('../tickets');
 
 const app = new Koa();
@@ -57,5 +57,4 @@ app.use(async (ctx) => {
   }
 });
 
-// ВАЖНО: не app.listen(), а экспорт обработчика
 module.exports = app.callback();
